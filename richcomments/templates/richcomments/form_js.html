@@ -8,7 +8,8 @@ var options = {
         // reload comments
         $('#commentlist_{{ selector_id }}').load("{% url render_comment_list content_type object_pk %}" , function(responseText, textStatus, XMLHttpRequest) {
             // fill span with response
-            $('#{{ selector_id }}').html(response_text);
+            $('#{{ selector_id }}').find("#rsp-text").remove();
+	    $('#{{ selector_id }}').append($("<span id='rsp-text'>"+ response_text +"</span>"));
             // rebind form
             $('#{{ selector_id }} form').ajaxForm(options);
         });
